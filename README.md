@@ -21,8 +21,7 @@ Patching repositories in bulk.
 
 ## What is it?
 
-Excavator (or shortly excav) is yet tool, that automatize process of patching
-repositories in bulk. Currently only GitLab is supported.
+Excavator (or shortly excav) automatize process of patching repositories in bulk.
 
 ### Motivation
 
@@ -55,16 +54,11 @@ The tool is following process:
 ## Installation and configuration
 
 Currently, `excav` isn't available via any packaging tool like Homebrew. Only way
-how to install it is clone this repository and build it. You will need Go 1.18.
+how to install it is download the binary directly from [here](https://github.com/sn3d/excav/releases/), unpack 
+and place it somewhere into your system.
 
-```
-git clone git clone git@github.com:sn3d/excav.git
-cd excav
-go install
-``` 
-
-After installation is done, you can configure it. Run the following `init` 
-process. You will be prompted few questions about GitLab etc.
+After installation is done, you can configure it by running the `init`. You will 
+be prompted few questions about GitLab etc.
 
 ```
 excav init 
