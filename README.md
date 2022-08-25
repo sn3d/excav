@@ -1,6 +1,6 @@
 # Excav
 
-Patching repositories in bulk.
+Apply changes to multiple repositories in bulk.
 
 ![](./docs/demo.gif)
 
