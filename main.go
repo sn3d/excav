@@ -1,9 +1,17 @@
 package main
 
 import (
+	"github.com/sn3d/excav/cmd/apply"
+	"github.com/sn3d/excav/cmd/bulk"
+	"github.com/sn3d/excav/cmd/diff"
+	"github.com/sn3d/excav/cmd/discard"
+	"github.com/sn3d/excav/cmd/initialize"
+	"github.com/sn3d/excav/cmd/inventory"
+	"github.com/sn3d/excav/cmd/patch"
+	"github.com/sn3d/excav/cmd/push"
+	"github.com/sn3d/excav/cmd/show"
 	"os"
 
-	"github.com/sn3d/excav/cmd"
 	"github.com/sn3d/excav/internal/termui"
 	"github.com/sn3d/excav/lib/log"
 	"github.com/urfave/cli/v2"
@@ -15,14 +23,24 @@ var version = "development"
 func main() {
 
 	app := &cli.App{
-		Name:     "excav",
-		Before:   before,
-		Commands: cmd.Commands,
-		Version:  version,
+		Name:    "excav",
+		Before:  before,
+		Version: version,
 		Flags: []cli.Flag{
 			&cli.BoolFlag{
 				Name: "debug",
 			},
+		},
+		Commands: []*cli.Command{
+			initialize.Cmd,
+			apply.Cmd,
+			bulk.Cmd,
+			push.Cmd,
+			diff.Cmd,
+			show.Cmd,
+			discard.Cmd,
+			patch.Cmd,
+			inventory.Cmd,
 		},
 	}
 
@@ -32,14 +50,11 @@ func main() {
 	}
 }
 
+// this function is executed before any subcommand and
+// handle the --debug option
 func before(ctx *cli.Context) error {
-
-	// when you specify "--debug", the logger is enabled,
-	// otherwise is disabled and only standard messages are
-	// print
 	if ctx.Bool("debug") {
 		log.EnableDebug()
 	}
-
 	return nil
 }
