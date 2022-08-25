@@ -9,12 +9,16 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+// version is set by goreleaser, via -ldflags="-X 'main.version=...'".
+var version = "development"
+
 func main() {
 
 	app := &cli.App{
 		Name:     "excav",
 		Before:   before,
 		Commands: cmd.Commands,
+		Version:  version,
 		Flags: []cli.Flag{
 			&cli.BoolFlag{
 				Name: "debug",

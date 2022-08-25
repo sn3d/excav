@@ -9,6 +9,8 @@ builds:
       - linux
       - darwin
       - windows
+    ldflags:
+      - -X 'main.version={{.Version}}'
 
 archives:
   - replacements:
