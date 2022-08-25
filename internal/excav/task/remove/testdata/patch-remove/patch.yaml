@@ -1,0 +1,7 @@
+# This example demonstrate how to remove one or more files. If path is
+# to directory, the whole directory will be removed recursively
+- name: example-remove-files
+  remove:
+    files:
+      - subdir/file1.txt
+      - subdir/file2.txt

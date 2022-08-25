@@ -1,0 +1,16 @@
+
+func raspberry() {
+    // some code here
+}
+
+
+
+func tomato() {
+    // some code here
+}
+
+func lemon() {
+    // some code here
+}
+
+

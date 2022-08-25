@@ -1,0 +1,8 @@
+# This example demonstrate how to delete some text or code in files
+#
+# This patch delete everything between '// -->' and '// <--' comments
+- name: example-add-readme
+  delete:
+    path: code.txt
+    begin: "// -->"
+    end: "// <--"

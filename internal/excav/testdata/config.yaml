@@ -1,0 +1,3 @@
+workspace: "/tmp/excav/workspace"
+gitlab: "gitlab.com"
+gitlab_token: "token123"

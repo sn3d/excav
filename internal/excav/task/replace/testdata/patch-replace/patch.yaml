@@ -1,0 +1,22 @@
+# This example demonstrate how to replace text that's matching
+# given reg.exp.
+- name: example-replace-byregexp
+  replace:
+    path: file1.txt
+    regexp: "Hello (.*)"
+    replace: "Hello Patch"
+
+# This example demonstrate how to replace exact text in file
+- name: example-replace-text
+  replace:
+    path: file2.txt
+    text: "zdenko-app"
+    replace: "patched-app"
+
+
+# This example demonstrate how to replace text in all '.go' files
+- name: example-replace-all-files
+  replace:
+    matchfile: (.*)\.go
+    text: "{REPLACE}"
+    replace: "Hello Excav"

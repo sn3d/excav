@@ -1,0 +1,12 @@
+- name: example-put-1
+  put:
+    path: "*.1"
+    anchor: "\\/\\/ @excav:(.*)"
+    content: "// Hello {{index .groups 0}}"
+    when_not: "\\/\\/ Hello (.*)"
+
+- name: example-put-2
+  put:
+    path: "file.2"
+    anchor: "\\/\\/ @excav:(.*)"
+    template: text.template

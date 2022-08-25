@@ -1,0 +1,7 @@
+# This example demonstrates how to replace 'TODO: text here' 
+# with content from template file
+- name: example-replace-template
+  replace:
+    path: file3.txt
+    text: "TODO: text here"
+    template: template.txt 

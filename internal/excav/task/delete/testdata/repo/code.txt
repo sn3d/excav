@@ -1,0 +1,24 @@
+
+func raspberry() {
+    // some code here
+}
+
+// -->
+func apple() {
+    // some code here
+}
+// <--
+
+func tomato() {
+    // some code here
+}
+
+func lemon() {
+    // some code here
+}
+
+// -->
+func orange() {
+    // some code here
+}
+// <--
