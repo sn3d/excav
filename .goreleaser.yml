@@ -31,7 +31,4 @@ changelog:
       - '^refactor:'
 
 release:
-  github:
-    owner: sn3d
-    name: excav
   name_template: "{{.ProjectName}}-v{{.Version}}"
