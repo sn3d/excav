@@ -71,6 +71,11 @@ do any further configuration changes in this file.
 
 The detailed documentation is available [here](docs/handbook.md)
 
+## Bugs & Feature requests
+
+Because it's alpha, you can easily find bugs or you can miss some features.
+I will appreciate if you will report bugs and feature requests [here](https://github.com/sn3d/excav/issues)
+
 ## Todo
 
 - better installation
