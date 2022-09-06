@@ -16,7 +16,7 @@ Excavator (or shortly excav) automatize process of patching repositories in bulk
 
 5. check and see merge/pull requests via `excav show`
 
-### Motivation
+## Motivation
 
 With raise of GitOps and microservices, we're facing to many repositories. Many of 
 them sharing common concepts, and it's easy to patch them in bulk. The problem is, 
