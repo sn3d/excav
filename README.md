@@ -2,6 +2,7 @@
 
 Excavator (or shortly excav) automatize process of patching repositories in bulk.
 
+![](./docs/demo.gif)
 
 ## How it works
 
@@ -14,8 +15,6 @@ Excavator (or shortly excav) automatize process of patching repositories in bulk
 4. push changed to all remote repositories `excav push`
 
 5. check and see merge/pull requests via `excav show`
-
-![](./docs/demo.gif)
 
 For more details check the [Quick start](docs/handbook.md#quick-start)
 
