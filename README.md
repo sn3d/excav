@@ -1,10 +1,23 @@
 # Excav
 
-Apply changes to multiple repositories in bulk.
+Apply changes to multiple repositories in bulk. Excavator (or shortly excav) 
+automatize process of patching repositories in bulk.
 
 ![](./docs/demo.gif)
 
-- [What is it?](#what-is-it)
+## How it works
+
+1. create [inventory](#inventory) of repositories you want to patch.
+
+2. define your [patch](#patch) (it might be also reusable parametrised patch)
+
+3. apply patch to selected repositories via `excav apply`
+
+4. push changed to all remote repositories `excav push`
+
+4. check and see merge/pull requests via `excav show`
+
+
 - [Installation and configuration](#installation-and-configuration)
 - [Quick start](#quick-start)
 - [Excav guidebook](#excav-guidebook)
@@ -19,9 +32,6 @@ Apply changes to multiple repositories in bulk.
     + [Script](#script)
 - [Changelog](#changelog)
 
-## What is it?
-
-Excavator (or shortly excav) automatize process of patching repositories in bulk.
 
 ### Motivation
 
@@ -37,17 +47,7 @@ Of course, not every patch can be applied in bulk. The goal of this tool is to
 help with those, they're easily reproducible. You need to consider if you're 
 able to patch them easily, or you need some very specific patching.
 
-### How it works
-
-1. you need to create [inventory](#inventory) of repositories you want to patch.
-
-2. you need to define your [patch](#patch)
-
-3. apply patch to selected repositories
-
-4. check and see merge/pull requests
-
-## Installation
+## Installation and configuration
 
 Currently, `excav` is not available in any package system like Homebrew etc. But 
 it's simple binary file which can be easily installed with those two methods:
@@ -65,13 +65,13 @@ wget -q -O - https://installme.sh/sn3d/excav | sh
 ```
 
 
-### Manual installation (mainly for Windows)
+### Manual install (mainly for Windows)
 
 Download the correct binary for your platform from [project's GitHub](https://github.com/sn3d/excav/releases/latest).
 Uncompress the binary to you `PATH`.
 
 
-## Configuration 
+### Configuration 
 
 After installation is done, you can configure it by running the `init`. You will 
 be prompted few questions about GitLab etc.
