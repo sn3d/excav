@@ -1,7 +1,6 @@
 # Excav
 
-Apply changes to multiple repositories in bulk. Excavator (or shortly excav) 
-automatize process of patching repositories in bulk.
+Excavator (or shortly excav) automatize process of patching repositories in bulk.
 
 ![](./docs/demo.gif)
 
@@ -15,23 +14,7 @@ automatize process of patching repositories in bulk.
 
 4. push changed to all remote repositories `excav push`
 
-4. check and see merge/pull requests via `excav show`
-
-
-- [Installation and configuration](#installation-and-configuration)
-- [Quick start](#quick-start)
-- [Excav guidebook](#excav-guidebook)
-  * [Inventory](#inventory)
-  * [Patch](#patch)
-  * [Tasks](#tasks)
-    + [Append](#append)
-    + [Put](#put)
-    + [New File](#new-file)
-    + [Remove](#remove)
-    + [Replace](#replace)
-    + [Script](#script)
-- [Changelog](#changelog)
-
+5. check and see merge/pull requests via `excav show`
 
 ### Motivation
 
