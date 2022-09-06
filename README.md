@@ -34,28 +34,44 @@ The goal of excav is not just helping with patching itself but reducing time spe
 general. That means helping with MRs, code review etc.
 
 Of course, not every patch can be applied in bulk. The goal of this tool is to
-help you with those, they're easily reproducible. You need to consider if you're 
+help with those, they're easily reproducible. You need to consider if you're 
 able to patch them easily, or you need some very specific patching.
 
 ### How it works
 
-The tool is inspired by something well know - Ansible. The repositories are organized 
-in [inventory](#inventory). The second important piece is [patch](#patch) - which is 
-inspired by Role. The tool apply patch to bulk of repositories in this inventory.
+1. you need to create [inventory](#inventory) of repositories you want to patch.
 
-The tool is following process:
+2. you need to define your [patch](#patch)
 
-- clone repositories
-- apply [patch](#patch) to every repository in bulk
-- push the new branch into GitHub/GitLab
-- create Merge Request/Pull Request in every repository in bulk.
-- checking pipelines for all Merge Requests/Pull Requests - not yet implemented
+3. apply patch to selected repositories
 
-## Installation and configuration
+4. check and see merge/pull requests
 
-Currently, `excav` isn't available via any packaging tool like Homebrew. Only way
-how to install it is download the binary directly from [here](https://github.com/sn3d/excav/releases/), unpack 
-and place it somewhere into your system.
+## Installation
+
+Currently, `excav` is not available in any package system like Homebrew etc. But 
+it's simple binary file which can be easily installed with those two methods:
+
+### curl/wget install (macOS & Linux)
+
+You can install excav with curl or get with those one-liners:
+
+```
+curl -s https://installme.sh/sn3d/excav | sh
+```
+
+```
+wget -q -O - https://installme.sh/sn3d/excav | sh
+```
+
+
+### Manual installation (mainly for Windows)
+
+Download the correct binary for your platform from [project's GitHub](https://github.com/sn3d/excav/releases/latest).
+Uncompress the binary to you `PATH`.
+
+
+## Configuration 
 
 After installation is done, you can configure it by running the `init`. You will 
 be prompted few questions about GitLab etc.
