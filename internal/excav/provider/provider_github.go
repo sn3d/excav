@@ -13,6 +13,7 @@ type githubProvider struct {
 	gitHost string
 	apiHost string
 	token   string
+	user    string
 }
 
 func (gh *githubProvider) GetRepositoryURL(repoName string) string {
@@ -21,6 +22,9 @@ func (gh *githubProvider) GetRepositoryURL(repoName string) string {
 
 func (gh *githubProvider) GetToken() string {
 	return gh.token
+}
+func (gh *githubProvider) GetUser() string {
+	return gh.user
 }
 
 func (gh *githubProvider) CreateMergeRequest(repoName string, branch string, commitMsg string) (string, error) {

@@ -62,7 +62,7 @@ func Open(dir string) (*Repository, error) {
 //
 // The Clone function do fast clone. That means it clones only one branch
 // and depth 1 commit
-func Clone(src, dest, branch, authToken string) (*Repository, error) {
+func Clone(src, dest, branch, authUser string, authToken string) (*Repository, error) {
 	if branch == "" {
 		branch = "main"
 	}
@@ -71,7 +71,7 @@ func Clone(src, dest, branch, authToken string) (*Repository, error) {
 		URL:           src,
 		ReferenceName: plumbing.ReferenceName(fmt.Sprintf("refs/heads/%s", branch)),
 		Auth: &http.BasicAuth{
-			Username: "",
+			Username: authUser,
 			Password: authToken,
 		},
 
@@ -149,13 +149,13 @@ func (r *Repository) CommitAll(msg string) error {
 	return nil
 }
 
-func (r *Repository) PushNewBranch(authToken string, branch string) error {
+func (r *Repository) PushNewBranch(authUser string, authToken string, branch string) error {
 	// we want to push new branch, this is bit tricky because
 	// we need to create also connection between local and remote
 	upstreamRef := plumbing.ReferenceName("refs/heads/" + branch)
 	err := r.repo.Push(&git.PushOptions{
 		Auth: &http.BasicAuth{
-			Username: "",
+			Username: authUser,
 			Password: authToken,
 		},
 		RemoteName: "origin",

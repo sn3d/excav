@@ -31,6 +31,10 @@ func (gl *gitlabProvider) GetToken() string {
 	return gl.token
 }
 
+func (gl *gitlabProvider) GetUser() string {
+	return ""
+}
+
 func (gl *gitlabProvider) CreateMergeRequest(repoName string, branch string, title string) (string, error) {
 
 	// validation first. Better to do validation here then in GitLab.

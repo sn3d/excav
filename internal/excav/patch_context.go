@@ -96,19 +96,23 @@ func (ctx *PatchContext) Push() error {
 		return err
 	}
 
-	err = repo.PushNewBranch(ctx.prvd.GetToken(), ctx.Branch)
+	log.Debug("pushing branch", "branch", ctx.Branch, "user", ctx.prvd.GetUser())
+	err = repo.PushNewBranch(ctx.prvd.GetUser(), ctx.prvd.GetToken(), ctx.Branch)
 	if err != nil {
 		log.Error("cannot push new branch", err)
 		ctx.handleError(errors.New("Cannot push new branch. Probably branch already exist"))
 		return err
 	}
 
+	log.Debug("create MR/PR")
 	ctx.MergeRequestURL, err = ctx.prvd.CreateMergeRequest(ctx.RepoName, ctx.Branch, ctx.Description)
 	if err != nil {
 		log.Error("cannot create merge request for branch", err)
 		ctx.handleError(err)
 		return err
 	}
+
+	ctx.ErrorMsg = ""
 
 	return nil
 }
@@ -134,9 +138,11 @@ func (ctx *PatchContext) cloneOrOpen() (*git.Repository, error) {
 	if repoDir.IsNotExist() {
 		// clone repository
 		repoURL := ctx.prvd.GetRepositoryURL(ctx.RepoName)
-		repo, err = git.Clone(repoURL, string(repoDir), ctx.DefaultBranch, ctx.prvd.GetToken())
+		log.Debug("cloning repository", "repoUrl", repoURL, "dir", string(repoDir), "branch", ctx.DefaultBranch, "user", ctx.prvd.GetUser())
+		repo, err = git.Clone(repoURL, string(repoDir), ctx.DefaultBranch, ctx.prvd.GetUser(), ctx.prvd.GetToken())
 		return repo, err
 	} else {
+		log.Debug("open repository", "dir", string(repoDir))
 		return ctx.open()
 	}
 }

@@ -214,6 +214,7 @@ func newProvider(cfg *Configuration) provider.Provider {
 		Host:     cfg.GetProviderHost(),
 		ApiHost:  cfg.GetProviderApiHost(),
 		Token:    cfg.GetProviderToken(),
+		User:     cfg.GetProviderUser(),
 	})
 	return prvd
 }

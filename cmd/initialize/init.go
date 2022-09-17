@@ -41,18 +41,14 @@ var Cmd = &cli.Command{
 			GitHubToken:   ctx.String("github-token"),
 		}
 
-		/* let's skip GitHub provider for now - it's experimental
 		provider := termui.Select("What provider do you want to use?", "gitlab", "github")
-
 		switch provider {
 		case "gitlab":
 			askGitLab(&cfg)
 		case "github":
 			askGitHub(&cfg)
 		}
-		*/
-
-		askGitLab(&cfg)
+		//askGitLab(&cfg)
 
 		// save configuration to config file
 		userHome, _ := os.UserHomeDir()
@@ -100,6 +96,10 @@ func askGitHub(cfg *excav.Configuration) {
 		if cfg.GitHubApiHost == "" {
 			cfg.GitHubApiHost = "https://api.github.com"
 		}
+	}
+
+	if cfg.GitHubUser == "" {
+		cfg.GitHubUser = termui.Ask("What's your GitHub user?")
 	}
 
 	if cfg.GitHubToken == "" {
