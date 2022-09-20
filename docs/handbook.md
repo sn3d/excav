@@ -6,7 +6,7 @@ repositories,how to define patches etc.
 ## Quick start
 
 Before you start, create `excav-demorepo-1` and `excav-demorepo-2` repositories in your private or 
-public GitLab. Also be sure your `excav` is installed and configured 
+public GitLab or GitHub. Also be sure your `excav` is installed and configured 
 (see [Installation and Configuration](../README.md#installation-and-configuration)). 
 
 Create inventory file in some workspace directory e.g. `~/excav-demo/inventory.yaml`:

@@ -58,7 +58,7 @@ Uncompress the binary to you `PATH`.
 ### Configuration 
 
 After installation is done, you can configure it by running the `init`. You will 
-be prompted few questions about GitLab etc.
+be prompted few questions about your GitHub/GitLab etc.
 
 ```
 excav init 
@@ -79,6 +79,5 @@ I will appreciate if you will report bugs and feature requests [here](https://gi
 ## Todo
 
 - better installation
-- support for GitHub (It's already implemented but not tested well)
 - metadata for better exploration of patch parameters
-
+- better code :-)
