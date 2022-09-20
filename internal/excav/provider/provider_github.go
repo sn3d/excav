@@ -28,6 +28,13 @@ func (gh *githubProvider) GetUser() string {
 }
 
 func (gh *githubProvider) CreateMergeRequest(repoName string, branch string, commitMsg string) (string, error) {
+	// Let's cut the '/' prefix in repo name
+	// repository might start with '/' (e.g. /sn3d/repo)
+	// but GitHub API have problems with //sn3d/repo URLs.
+	if strings.HasPrefix(repoName, "/") {
+		repoName = repoName[1:]
+	}
+
 	defaultBranch := gh.getDefaultBranch(repoName)
 	url := fmt.Sprintf("%s/repos/%s/pulls", gh.apiHost, repoName)
 	payload := fmt.Sprintf("{ \"title\": \"%s\", \"head\":\"%s\", \"base\": \"%s\" }", commitMsg, branch, defaultBranch)
