@@ -107,6 +107,16 @@ Excav organize patches in own folders same as Ansible organize Roles. It's becau
 some patches might have assets like templates or source code files. Every patch 
 folder has `patch.yaml` on root, where we declare [tasks](#tasks).
 
+Example of `my-patch.yaml` patch with single task
+
+```
+- name: append-hello-world
+  append:
+    path: README.md
+    mode: append-end
+    content: "Hello World"
+```
+
 ## Tasks
 
 Task is simple single step what to do. Excav executes the task for each 

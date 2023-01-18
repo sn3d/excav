@@ -1,0 +1,85 @@
+site_name: Excav
+site_url: https://excav.dev
+repo_url: https://github.com/sn3d/excav
+edit_uri: edit/main/docs/
+theme:
+  name: material
+  custom_dir: docs/overrides
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - content.code.annotate
+    - navigation.top
+    - navigation.instant
+    - navigation.indexes
+    - navigation.sections
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: 'Work Sans'
+
+plugins:
+  - search
+  - tags
+ 
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - Introduction: intro.md
+  - Installation: installation.md
+  - Quick start: quick_start.md
+
+  - Concepts:
+    - concepts/index.md
+    - Inventory: concepts/inventory.md
+    - Patch: concepts/patch.md
+
+  - Tasks:
+    - tasks/index.md
+    - Append: tasks/append.md
+    - New file: tasks/newfile.md
+    - Put: tasks/put.md
+    - Remove: tasks/remove.md
+    - Replace: tasks/replace.md
+    - Script: tasks/script.md

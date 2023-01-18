@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/sn3d/excav/cmd/apply"
 	"github.com/sn3d/excav/cmd/bulk"
 	"github.com/sn3d/excav/cmd/diff"
@@ -10,7 +12,6 @@ import (
 	"github.com/sn3d/excav/cmd/patch"
 	"github.com/sn3d/excav/cmd/push"
 	"github.com/sn3d/excav/cmd/show"
-	"os"
 
 	"github.com/sn3d/excav/internal/termui"
 	"github.com/sn3d/excav/lib/log"

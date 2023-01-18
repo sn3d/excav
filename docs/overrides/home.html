@@ -1,0 +1,92 @@
+{% extends "main.html" %}
+{% block tabs %}
+{{ super() }}
+<style>
+
+   .md-typeset h1 {
+      font-weight: bolder;
+      font-size: xxx-large;
+      color: #000000;
+      margin-bottom: 0rem;
+   }
+
+   .md-main {
+      display: none
+   }
+
+   .tx-container {
+		padding-top: 1rem;
+      margin: 0 1rem;
+   }
+
+   .md-button {
+      margin-top: 1rem;
+   }
+
+   [data-md-color-primary=white] .md-button--secondary {
+    color: var(--md-default-fg-color);
+   }
+
+   [data-md-color-primary=white] .md-button--secondary:hover {
+      color: #ffffff;
+      background-color: #000000;
+      border-color: #000000;
+   }
+
+   @media screen and (min-width:70em) {
+      .tx-both {
+			display: flex;
+			align-items: stretch
+		}
+
+      .tx-content {
+			max-width: 30rem;
+			padding-bottom: 14vw
+		}
+
+		.tx-demo {
+			order: 1;
+			margin-left: auto;
+         margin-right: auto;
+         margin-top: 1.6rem;
+		}
+
+      .tx-demo img {
+         max-width: 25rem;
+      }
+
+      .tx-container {
+		   padding-top: 5rem;
+         margin: 0 10rem;
+      }
+   }
+</style>
+
+<section class="tx-container">
+	<div class="md-grid md-typeset">
+
+      <h1>Excav</h1>
+      <div class="tx-both">
+         <div class="tx-demo">
+            <img src="assets/demo.gif"/>
+         </div>
+         <div class="tx-content">
+            <h2>Patching multiple repositories in bulk</h2>
+            <p>and much more:</p>
+            <ul>
+               <li>Managing bulk of patches after they're pushed to repositories</li>
+               <li>Parametrized repetitive patches</li>
+               <li>Rolling patches</li>
+            </ul>
+
+            <a href="intro" title="Introduction" class="md-button md-button--secondary">
+                  Learn more
+            </a>
+         </div>
+      </div>
+   </div>
+</section>
+
+{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}
