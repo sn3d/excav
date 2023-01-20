@@ -7,11 +7,11 @@
 #
 # THe test is using 'steve' as .name
 - name: add-file
-  newfile:
+  file:
     src: readme.txt
     dest: path/to/readme-{{.name}}.txt
 
 - name: override-file
-  newfile:
+  file:
     src: replacement.txt
     dest: "{{.name}}.txt"

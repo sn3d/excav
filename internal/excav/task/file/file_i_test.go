@@ -1,4 +1,4 @@
-package newfile_test
+package file_test
 
 import (
 	"os"
@@ -13,7 +13,7 @@ func Test_File(t *testing.T) {
 	testdata.Prepare()
 
 	// given patch with 'add' task
-	patchDir := testdata.AbsPath("patch-newfile")
+	patchDir := testdata.AbsPath("patch-file")
 	p, err := excav.OpenPatch(patchDir)
 	if err != nil {
 		t.Fatalf("error in opening patch file: %s", err.Error())
@@ -39,7 +39,7 @@ func Test_File(t *testing.T) {
 	}
 
 	// the patched 'steve.txt' must equal to replacement
-	equal := testdata.CompareFiles("repo/steve.txt", "patch-newfile/replacement.txt")
+	equal := testdata.CompareFiles("repo/steve.txt", "patch-file/replacement.txt")
 	if !equal {
 		t.FailNow()
 	}
