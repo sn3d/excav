@@ -4,7 +4,7 @@ import (
 	"github.com/sn3d/excav/api"
 	"github.com/sn3d/excav/internal/excav/task/append"
 	"github.com/sn3d/excav/internal/excav/task/delete"
-	"github.com/sn3d/excav/internal/excav/task/newfile"
+	"github.com/sn3d/excav/internal/excav/task/file"
 	"github.com/sn3d/excav/internal/excav/task/put"
 	"github.com/sn3d/excav/internal/excav/task/remove"
 	"github.com/sn3d/excav/internal/excav/task/replace"
@@ -18,7 +18,7 @@ type ParseTaskFunc func(name string, in interface{}) (api.Task, error)
 var Parsers = map[string]ParseTaskFunc{
 	"replace": replace.Parse,
 	"append":  append.Parse,
-	"newfile": newfile.Parse,
+	"file":    file.Parse,
 	"remove":  remove.Parse,
 	"script":  script.Parse,
 	"delete":  delete.Parse,

@@ -1,0 +1,17 @@
+# This example demonstrate how to add and replace files in repository.
+#
+# Parent folders will be created automatically if they're not present in
+# patched repository. The 'template' determine path to source file. It's relative
+# to directory where is 'patch.yaml'. The 'path' on other side is relative path
+# to patched repository.
+#
+# THe test is using 'steve' as .name
+- name: add-file
+  newfile:
+    src: readme.txt
+    dest: path/to/readme-{{.name}}.txt
+
+- name: override-file
+  newfile:
+    src: replacement.txt
+    dest: "{{.name}}.txt"

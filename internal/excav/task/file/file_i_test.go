@@ -9,12 +9,16 @@ import (
 	"github.com/sn3d/excav/lib/testdata"
 )
 
-func Test_AddTask(t *testing.T) {
+func Test_File(t *testing.T) {
 	testdata.Prepare()
 
 	// given patch with 'add' task
 	patchDir := testdata.AbsPath("patch-newfile")
-	p, _ := excav.OpenPatch(patchDir)
+	p, err := excav.OpenPatch(patchDir)
+	if err != nil {
+		t.Fatalf("error in opening patch file: %s", err.Error())
+		t.FailNow()
+	}
 
 	// when we apply patch
 	params := map[string]interface{}{
@@ -23,7 +27,7 @@ func Test_AddTask(t *testing.T) {
 	}
 
 	repoDir := testdata.AbsPath("repo")
-	err := p.Apply(repoDir, params)
+	err = p.Apply(repoDir, params)
 	if err != nil {
 		t.FailNow()
 	}
@@ -33,4 +37,11 @@ func Test_AddTask(t *testing.T) {
 	if os.IsNotExist(err) {
 		t.FailNow()
 	}
+
+	// the patched 'steve.txt' must equal to replacement
+	equal := testdata.CompareFiles("repo/steve.txt", "patch-newfile/replacement.txt")
+	if !equal {
+		t.FailNow()
+	}
+
 }

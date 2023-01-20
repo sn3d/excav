@@ -5,9 +5,10 @@ import (
 )
 
 // scenario:
-//   when: we delete text between '>' and '<'
-//   then: the text should be without part in a middle
-func TestDeleteLines(t *testing.T) {
+//
+//	when: we delete text between '>' and '<'
+//	then: the text should be without part in a middle
+func Test_DeleteLines(t *testing.T) {
 	text := "Hello > We want to cut < Johnny"
 	out := del([]byte(text), ">", "<")
 
@@ -17,9 +18,10 @@ func TestDeleteLines(t *testing.T) {
 }
 
 // scenario:
-//   when: we delete text where is no end present
-//   then: the text should be without part in a middle
-func TestDeleteLinesNoEnd(t *testing.T) {
+//
+//	when: we delete text where is no end present
+//	then: the text should be without part in a middle
+func Test_DeleteLinesNoEnd(t *testing.T) {
 	text := "Hello > We want to cut"
 	out := del([]byte(text), ">", "<")
 
@@ -29,9 +31,10 @@ func TestDeleteLinesNoEnd(t *testing.T) {
 }
 
 // scenario:
-//   when: we delete text where is no begin anchor '>' present
-//   then: the text should be without part in a middle
-func TestDeleteLinesNoBegin(t *testing.T) {
+//
+//	when: we delete text where is no begin anchor '>' present
+//	then: the text should be without part in a middle
+func Test_DeleteLinesNoBegin(t *testing.T) {
 	text := "Hello + We want to cut < Johhny"
 	out := del([]byte(text), ">", "<")
 
@@ -41,10 +44,11 @@ func TestDeleteLinesNoBegin(t *testing.T) {
 }
 
 // scenario:
-//   given: text with '>' and '<' anchors
-//   when: I call del for those anchors
-//   then: text shouldn't contain any text between '>' and '<'
-func TestDeleteAll(t *testing.T) {
+//
+//	given: text with '>' and '<' anchors
+//	when: I call del for those anchors
+//	then: text shouldn't contain any text between '>' and '<'
+func Test_DeleteAll(t *testing.T) {
 	text := "Hello > We want to cut < Johnny > Yet another to cut < Bravo"
 	out := del([]byte(text), ">", "<")
 

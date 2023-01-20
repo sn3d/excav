@@ -8,7 +8,7 @@ import (
 	"github.com/sn3d/excav/lib/testdata"
 )
 
-func Test_Put(t *testing.T) {
+func Test_PutTask(t *testing.T) {
 	testdata.Prepare()
 	fmt.Println(testdata.String())
 

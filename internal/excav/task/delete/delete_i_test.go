@@ -8,10 +8,10 @@ import (
 )
 
 // scenario:
-//  - given repository with some code
-//  - when we apply patch with delete tas
-//  - then parts in code.txt should be deleted
-func Test_PatchDelete(t *testing.T) {
+//   - given repository with some code
+//   - when we apply patch with delete tas
+//   - then parts in code.txt should be deleted
+func Test_DeleteTask(t *testing.T) {
 	testdata.Prepare()
 	repoDir := testdata.AbsPath("repo")
 	patchDir := testdata.AbsPath("patch-delete")

@@ -1,9 +1,0 @@
-# This example demonstrate how to add file into patching repository.
-# Parent folders will be created automatically if they're not present in
-# patched repository. The 'template' determine path to source file. It's relative
-# to directory where is 'patch.yaml'. The 'path' on other side is relative path
-# to patched repository.
-- name: example-add-readme
-  newfile:
-    path: path/to/readme-{{.name}}.txt
-    template: readme.txt

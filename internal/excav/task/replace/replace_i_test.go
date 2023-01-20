@@ -10,9 +10,10 @@ import (
 )
 
 // scenario: replace tag with content from template file
-//     when: we apply patch 'patch-replace-tmplt' to 'example-replace' repository
-//     then: 'TODO' text need to be changed by content from 'template.txt'
-func TestReplaceTemplate(t *testing.T) {
+//
+//	when: we apply patch 'patch-replace-tmplt' to 'example-replace' repository
+//	then: 'TODO' text need to be changed by content from 'template.txt'
+func Test_ReplaceTask(t *testing.T) {
 	var err error
 	var p *excav.Patch
 

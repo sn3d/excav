@@ -8,6 +8,9 @@ import (
 	"path/filepath"
 )
 
+// global variable of temporary directory used for testing purpose.
+// I made it global for easy access everywhere in tests. Because it's
+// used only for testing I have no problem accept it as global
 var tempDir string
 
 // copies a single file from src to dst.
@@ -71,7 +74,7 @@ func cpDir(src string, dst string) {
 	}
 }
 
-// Prepare copies './testdata' folder for test to temporary
+// Prepare copy of './testdata' folder to temporary
 // directory
 //
 // This function ensure idempotency of tests
@@ -97,6 +100,9 @@ func String() string {
 
 // compare content o files, function returns true if they're
 // matching, otherwise it returns false.
+//
+// the a and b are relative paths to need to temporary testdata
+// directory
 //
 // The false is returned also when any error occurs.
 //

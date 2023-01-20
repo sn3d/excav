@@ -7,7 +7,7 @@ import (
 	"github.com/sn3d/excav/lib/testdata"
 )
 
-func Test_PatchAppend(t *testing.T) {
+func Test_AppendTask(t *testing.T) {
 	testdata.Prepare()
 	repoDir := testdata.AbsPath("repo")
 	patchDir := testdata.AbsPath("patch")
