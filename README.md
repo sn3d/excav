@@ -1,5 +1,5 @@
 <p align="center">
-  <h3 align="center">Excav</h3>
+  <h1 align="center">Excav</h1>
   <p align="center">Automatize process of patching repositories in bulk.</p>
 </p>
 
@@ -9,7 +9,7 @@ The goal of excav is not just helping with patchingi multiple repositories, but
 reducing time spent in general. That means helping with MRs, code review, 
 parametrized patching etc.
 
-![](./docs/demo.gif)
+![](./docs/assets/demo.gif)
 
 ---
 
