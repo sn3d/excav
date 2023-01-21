@@ -36,6 +36,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: a8c810b2a514e30b5a35cbda5c48d5bc
-          projectName: excav
+          projectName: excav-docs
           directory: site
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
