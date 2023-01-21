@@ -78,7 +78,7 @@ nav:
   - Tasks:
     - tasks/index.md
     - Append: tasks/append.md
-    - New file: tasks/newfile.md
+    - File: tasks/file.md
     - Put: tasks/put.md
     - Remove: tasks/remove.md
     - Replace: tasks/replace.md
