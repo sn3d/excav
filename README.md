@@ -1,12 +1,12 @@
 <p align="center">
   <h1 align="center">Excav</h1>
   <p align="center">Automatize process of patching repositories in bulk.</p>
-  <img src="https://excav.dev/assets/demo.gif"/>
+  <img alitn="center" src="https://excav.dev/assets/demo.gif"/>
 </p>
 
 ---
 
-The goal of excav is not just helping with patchingi multiple repositories, but 
+The goal of excav is not just helping with patching multiple repositories, but 
 reducing time spent in general. That means helping with MRs, code review, 
 parametrized patching etc.
 
