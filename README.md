@@ -1,7 +1,7 @@
 <p align="center">
   <h1 align="center">Excav</h1>
   <p align="center">Automatize process of patching repositories in bulk.</p>
-  <img align="center" src="https://excav.dev/assets/demo.gif"/>
+  <p align="center"><img src="https://excav.dev/assets/demo.gif"/></p>
 </p>
 
 ---
