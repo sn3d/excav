@@ -35,10 +35,11 @@ The full documentation is available [here](https://excav.dev/intro/)
 
 ## Bugs & Feature requests
 
-Because it's alpha, you can easily find bugs or you can miss some features.
-I will appreciate if you will report bugs and feature requests [here](https://github.com/sn3d/excav/issues)
+Because it's alpha, you can easily find bugs. I will appreciate if you will 
+report bugs [here](https://github.com/sn3d/excav/issues)
 
-If you have question of feature request, don't hesitate and visit [Discussion](https://github.com/sn3d/excav/discussions) section.
+If you have question or some feature request, don't hesitate and visit
+[Discussion](https://github.com/sn3d/excav/discussions) section.
 
 ## Todo
 
