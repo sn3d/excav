@@ -3,12 +3,12 @@ name: publish docs
 on:
   push:
     paths:
-    - docs
-    - mkdocs.yml
+      - 'docs/**'
+      - 'mkdocs.yml'
   pull_request:
     paths:
-    - docs
-    - mkdocs.yml
+      - 'docs/**'
+      - 'mkdocs.yml'
 
 jobs:
   publish:
