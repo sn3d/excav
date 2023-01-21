@@ -3,8 +3,14 @@ name: build
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'docs/**'
+      - 'mkdocs.yaml'
   pull_request:
-
+    paths-ignore:
+      - 'docs/**'
+      - 'mkdocs.yaml'
+ 
 jobs:
   build:
     name: Build
