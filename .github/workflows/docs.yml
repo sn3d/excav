@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - docs
+    - mkdocs.yml
+  pull_request:
+    paths:
+    - docs
+    - mkdocs.yml
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Publish to Cloudflare Pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - run: pip -r requirements.txt
+      - run: mkdocs build
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: a8c810b2a514e30b5a35cbda5c48d5bc
+          projectName: excav
+          directory: site
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
