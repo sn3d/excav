@@ -2,7 +2,7 @@
 
 ## Installation
 
-Currently, `excav` is not available in any package system like Homebrew etc. But 
+Right now, `excav` is not available in any package system like Homebrew etc. But 
 it's simple binary file which can be easily installed with those two methods:
 
 ### MacOS & Linux
