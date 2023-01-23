@@ -45,7 +45,12 @@ extra:
 plugins:
   - search
   - tags
- 
+  - social:
+      cards_color:
+        fill: "#000000" 
+        text: "#FFFFFF"
+      cards_font: 'Work Sans'
+
 markdown_extensions:
   - abbr
   - admonition
