@@ -47,8 +47,8 @@ plugins:
   - tags
   - social:
       cards_color:
-        fill: "#000000" 
-        text: "#FFFFFF"
+        fill: "#FFFFFF" 
+        text: "#000000"
       cards_font: 'Work Sans'
 
 markdown_extensions:
