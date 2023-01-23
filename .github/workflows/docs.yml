@@ -7,10 +7,12 @@ on:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
+      - 'requirements.txt'
   pull_request:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
+      - 'requirements.txt'
 
 jobs:
   publish:

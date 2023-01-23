@@ -5,11 +5,13 @@ on:
     branches: [ main ]
     paths-ignore:
       - 'docs/**'
-      - 'mkdocs.yaml'
+      - 'mkdocs.yml'
+      - 'requirements.txt'
   pull_request:
     paths-ignore:
       - 'docs/**'
-      - 'mkdocs.yaml'
+      - 'mkdocs.yml'
+      - 'requirements.txt'
  
 jobs:
   build:
