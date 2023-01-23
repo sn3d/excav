@@ -18,6 +18,10 @@ theme:
     text: 'Work Sans'
   palette: 
     primary: white
+    accent: red
+
+extra_css:
+  - stylesheets/extra.css
 
 extra:
   consent:
