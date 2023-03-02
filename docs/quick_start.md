@@ -16,7 +16,7 @@ Then we need create a patch with some simple task. Create a directory
 `demo-patch`.
 
 ```sh
-mkdocs demo-patch
+mkdir demo-patch
 ```
 
 Put a new file `patch.yaml` into this directory with one task:
