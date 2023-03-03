@@ -17,7 +17,7 @@ func Test_ReplaceTask(t *testing.T) {
 	var err error
 	var p *excav.Patch
 
-	testdata.Prepare()
+	testdata.Setup()
 	repoDir := testdata.AbsPath("repo")
 
 	p, err = excav.OpenPatch(testdata.AbsPath("patch-replace-tmplt"))

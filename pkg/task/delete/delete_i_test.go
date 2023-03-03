@@ -12,7 +12,8 @@ import (
 //   - when we apply patch with delete tas
 //   - then parts in code.txt should be deleted
 func Test_DeleteTask(t *testing.T) {
-	testdata.Prepare()
+	testdata.Setup()
+
 	repoDir := testdata.AbsPath("repo")
 	patchDir := testdata.AbsPath("patch-delete")
 

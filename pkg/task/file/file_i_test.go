@@ -10,7 +10,7 @@ import (
 )
 
 func Test_File(t *testing.T) {
-	testdata.Prepare()
+	testdata.Setup()
 
 	// given patch with 'add' task
 	patchDir := testdata.AbsPath("patch-file")

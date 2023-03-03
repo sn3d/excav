@@ -8,7 +8,8 @@ import (
 )
 
 func Test_AppendTask(t *testing.T) {
-	testdata.Prepare()
+	testdata.Setup()
+
 	repoDir := testdata.AbsPath("repo")
 	patchDir := testdata.AbsPath("patch")
 

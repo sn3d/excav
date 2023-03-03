@@ -9,7 +9,8 @@ import (
 )
 
 func Test_PutTask(t *testing.T) {
-	testdata.Prepare()
+	testdata.Setup()
+
 	fmt.Println(testdata.String())
 
 	p, err := excav.OpenPatch(testdata.AbsPath("patch"))

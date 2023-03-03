@@ -9,7 +9,7 @@ import (
 )
 
 func Test_ScriptTask(t *testing.T) {
-	testdata.Prepare()
+	testdata.Setup()
 
 	// given patch with replace tasks
 	p, err := excav.OpenPatch(testdata.AbsPath("patch-script"))

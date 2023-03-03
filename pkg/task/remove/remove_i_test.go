@@ -11,7 +11,8 @@ import (
 func Test_RemoveTask(t *testing.T) {
 
 	// given patch with 'remove' task
-	testdata.Prepare()
+	testdata.Setup()
+
 	patchDir := testdata.AbsPath("patch-remove")
 
 	p, err := excav.OpenPatch(patchDir)
