@@ -3,7 +3,7 @@ package excav
 import (
 	"fmt"
 
-	"github.com/sn3d/excav/api"
+	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/log"
 	"github.com/sn3d/excav/pkg/provider"
 )

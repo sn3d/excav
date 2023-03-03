@@ -3,7 +3,7 @@ package termui
 import (
 	"fmt"
 
-	"github.com/sn3d/excav/api"
+	"github.com/sn3d/excav/pkg/api"
 )
 
 type Listener struct {

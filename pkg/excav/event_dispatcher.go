@@ -1,6 +1,6 @@
 package excav
 
-import "github.com/sn3d/excav/api"
+import "github.com/sn3d/excav/pkg/api"
 
 // Dispatcher is responsible for delivery events to registered
 // listeners. The code is sending events via Notify and reacting

@@ -5,7 +5,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/sn3d/excav/api"
+	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/cast"
 )
 

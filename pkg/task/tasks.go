@@ -1,7 +1,7 @@
 package task
 
 import (
-	"github.com/sn3d/excav/api"
+	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/task/append"
 	"github.com/sn3d/excav/pkg/task/delete"
 	"github.com/sn3d/excav/pkg/task/file"

@@ -1,7 +1,7 @@
 package excav
 
 import (
-	"github.com/sn3d/excav/api"
+	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/cast"
 	"github.com/sn3d/excav/pkg/task"
 	"gopkg.in/yaml.v2"

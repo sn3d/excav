@@ -1,6 +1,6 @@
 package excav
 
-import "github.com/sn3d/excav/api"
+import "github.com/sn3d/excav/pkg/api"
 
 // dispatcher is globally available for all  excav internals.
 // Any excav part might emit event.
