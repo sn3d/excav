@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/cast"
+	"github.com/sn3d/excav/pkg/task"
 	"github.com/sn3d/excav/pkg/template"
 )
 
@@ -17,7 +17,7 @@ type FileTask struct {
 }
 
 // This function is called when YAML parser found 'file' task.
-func Parse(name string, in interface{}) (api.Task, error) {
+func Parse(name string, in interface{}) (task.Task, error) {
 	task := FileTask{
 		Mode: 0644,
 	}

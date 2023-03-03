@@ -1,9 +1,15 @@
 package excav
 
 import (
-	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/cast"
 	"github.com/sn3d/excav/pkg/task"
+	"github.com/sn3d/excav/pkg/task/append"
+	"github.com/sn3d/excav/pkg/task/delete"
+	"github.com/sn3d/excav/pkg/task/file"
+	"github.com/sn3d/excav/pkg/task/put"
+	"github.com/sn3d/excav/pkg/task/remove"
+	"github.com/sn3d/excav/pkg/task/replace"
+	"github.com/sn3d/excav/pkg/task/script"
 	"gopkg.in/yaml.v2"
 )
 
@@ -54,13 +60,32 @@ func parseYaml(data []byte, out *Patch) error {
 // parameter!
 func parseTask(name string, record map[string]interface{}, out *Patch) {
 	for k, val := range record {
-		parser := task.Parsers[k]
-		if parser != nil {
-			task, _ := parser(name, val)
-			if task != nil {
-				out.Tasks[name] = task
-				break
-			}
+		var t task.Task
+		var err error
+
+		switch k {
+		case "replace":
+			t, err = replace.Parse(name, val)
+		case "append":
+			t, err = append.Parse(name, val)
+		case "file":
+			t, err = file.Parse(name, val)
+		case "remove":
+			t, err = remove.Parse(name, val)
+		case "script":
+			t, err = script.Parse(name, val)
+		case "delete":
+			t, err = delete.Parse(name, val)
+		case "put":
+			t, err = put.Parse(name, val)
+		}
+
+		if err != nil {
+			break
+		}
+
+		if t != nil {
+			out.Tasks[name] = t
 		}
 	}
 }
@@ -69,7 +94,7 @@ func parseTask(name string, record map[string]interface{}, out *Patch) {
 // every task like 'Only' etc.
 func parseTaskMetadata(name string, record map[string]interface{}, out *Patch) {
 	// parse metadata
-	metadata := &api.TaskMetadata{
+	metadata := &task.Metadata{
 		Only: cast.ToStr(record["only"]),
 	}
 	out.Metadata[name] = metadata

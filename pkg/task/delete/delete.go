@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/cast"
+	"github.com/sn3d/excav/pkg/task"
 )
 
 type DeleteTask struct {
@@ -16,7 +16,7 @@ type DeleteTask struct {
 	EndAnchor   string
 }
 
-func Parse(name string, in interface{}) (api.Task, error) {
+func Parse(name string, in interface{}) (task.Task, error) {
 	task := DeleteTask{}
 	for key, val := range cast.ToData(in) {
 		switch cast.ToStr(key) {

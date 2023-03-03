@@ -6,8 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/log"
+	"github.com/sn3d/excav/pkg/task"
 )
 
 // Patch contains one or more tasks they're applied to
@@ -15,8 +15,8 @@ import (
 type Patch struct {
 	currentDir string
 	Params     Params
-	Tasks      map[string]api.Task
-	Metadata   map[string]*api.TaskMetadata
+	Tasks      map[string]task.Task
+	Metadata   map[string]*task.Metadata
 }
 
 // Open and returns patch. It's read and parse 'patch.yaml' for
@@ -26,8 +26,8 @@ func OpenPatch(dir string) (*Patch, error) {
 	patch := &Patch{
 		currentDir: dir,
 		Params:     make(Params),
-		Tasks:      make(map[string]api.Task),
-		Metadata:   make(map[string]*api.TaskMetadata),
+		Tasks:      make(map[string]task.Task),
+		Metadata:   make(map[string]*task.Metadata),
 	}
 
 	mainFile := filepath.Join(dir, "patch.yaml")
@@ -47,7 +47,7 @@ func OpenPatch(dir string) (*Patch, error) {
 // Apply patch to directory(absolute path), where is repository cloned.
 // If some task failed, the apply terminate process with error of task.
 //
-// This function also emmit events like api.TaskStarted and api.TaskEnd
+// This function also emmit events like TaskStarted and TaskEnd
 // into global dispatcher.
 func (p *Patch) Apply(repoDir string, params map[string]interface{}) error {
 	log.Debug("apply patch")
@@ -63,16 +63,16 @@ func (p *Patch) Apply(repoDir string, params map[string]interface{}) error {
 
 	for taskName, task := range p.Tasks {
 		log.Debug("apply task", "task", taskName)
-		dispatcher.Notify(api.TaskStarted{Task: taskName})
+		dispatcher.Notify(TaskStarted{Task: taskName})
 
 		err := task.Patch(absRepoDir, params)
 		if err != nil {
-			dispatcher.Notify(api.TaskEnd{Task: taskName, Error: err})
+			dispatcher.Notify(TaskEnd{Task: taskName, Error: err})
 			log.Error("cannot apply task", err)
 			return err
 		}
 
-		dispatcher.Notify(api.TaskEnd{Task: taskName})
+		dispatcher.Notify(TaskEnd{Task: taskName})
 	}
 
 	log.Debug("patch applied")

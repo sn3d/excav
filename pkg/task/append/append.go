@@ -7,9 +7,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/cast"
 	"github.com/sn3d/excav/pkg/log"
+	"github.com/sn3d/excav/pkg/task"
 	"github.com/sn3d/excav/pkg/template"
 )
 
@@ -45,7 +45,7 @@ type AppendTask struct {
 	When string
 }
 
-func Parse(name string, in interface{}) (api.Task, error) {
+func Parse(name string, in interface{}) (task.Task, error) {
 	task := AppendTask{}
 	for key, val := range cast.ToData(in) {
 		switch cast.ToStr(key) {

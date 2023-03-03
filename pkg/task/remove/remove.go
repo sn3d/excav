@@ -4,15 +4,15 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/cast"
+	"github.com/sn3d/excav/pkg/task"
 )
 
 type RemoveTask struct {
 	Files []string
 }
 
-func Parse(name string, in interface{}) (api.Task, error) {
+func Parse(name string, in interface{}) (task.Task, error) {
 	task := RemoveTask{}
 	for key, val := range cast.ToData(in) {
 		switch cast.ToStr(key) {

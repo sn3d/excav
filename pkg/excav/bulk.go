@@ -3,7 +3,6 @@ package excav
 import (
 	"fmt"
 
-	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/log"
 	"github.com/sn3d/excav/pkg/provider"
 )
@@ -114,13 +113,13 @@ func (b *Bulk) AddRepository(repo *Repository, globalParams Params, mergeRequest
 func (b *Bulk) Apply(repoName string, p *Patch, message string) {
 	for _, ctx := range b.contexts {
 		if ctx.RepoName == repoName {
-			dispatcher.Notify(api.PatchingStarted{
+			dispatcher.Notify(PatchingStarted{
 				Repo: ctx.RepoName,
 			})
 
 			ctx.Apply(p, message)
 
-			dispatcher.Notify(api.PatchApplied{
+			dispatcher.Notify(PatchApplied{
 				Repo:      ctx.RepoName,
 				Branch:    ctx.Branch,
 				CommitMsg: message,
@@ -133,7 +132,7 @@ func (b *Bulk) Apply(repoName string, p *Patch, message string) {
 func (b *Bulk) PushAll() {
 	for _, ctx := range b.contexts {
 		ctx.Push()
-		dispatcher.Notify(api.Pushed{
+		dispatcher.Notify(Pushed{
 			Repo:            ctx.RepoName,
 			MergeRequestURL: ctx.MergeRequestURL,
 			ErrorMsg:        ctx.ErrorMsg,
@@ -146,7 +145,7 @@ func (b *Bulk) Close() error {
 	for _, context := range b.contexts {
 		if err := saveContext(b.dir, context); err != nil {
 			//TODO: handle error
-			dispatcher.Notify(api.RepoError{
+			dispatcher.Notify(RepoError{
 				Repo:     context.RepoName,
 				ErrorMsg: "error saving state of repo",
 				Error:    err,
@@ -194,7 +193,7 @@ func (b *Bulk) Discard() error {
 	for _, ctx := range b.contexts {
 		if ctx.MergeRequestURL != "" { // discard only pushed MRs
 			err := b.prvd.DeleteBranch(ctx.RepoName, ctx.Branch)
-			dispatcher.Notify(api.RepoDiscarded{
+			dispatcher.Notify(RepoDiscarded{
 				Repo:  ctx.RepoName,
 				Error: err,
 			})
@@ -204,7 +203,7 @@ func (b *Bulk) Discard() error {
 	// unset current bulk
 	b.cfg.SetCurrentBulk("")
 
-	dispatcher.Notify(api.BulkDiscarded{})
+	dispatcher.Notify(BulkDiscarded{})
 	return nil
 }
 

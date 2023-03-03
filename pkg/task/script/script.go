@@ -5,8 +5,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/sn3d/excav/pkg/api"
 	"github.com/sn3d/excav/pkg/cast"
+	"github.com/sn3d/excav/pkg/task"
 )
 
 type ScriptTask struct {
@@ -17,7 +17,7 @@ type scriptData struct {
 	RepositoryDir string
 }
 
-func Parse(name string, in interface{}) (api.Task, error) {
+func Parse(name string, in interface{}) (task.Task, error) {
 	data := in.([]interface{})
 	task := ScriptTask{
 		Commands: cast.ToStrArr(data),
