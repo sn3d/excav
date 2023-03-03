@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/sn3d/excav/pkg/excav"
-	"github.com/sn3d/excav/pkg/testdata"
+	"github.com/sn3d/testdata"
 )
 
 func Test_RemoveTask(t *testing.T) {
@@ -13,7 +13,7 @@ func Test_RemoveTask(t *testing.T) {
 	// given patch with 'remove' task
 	testdata.Setup()
 
-	patchDir := testdata.AbsPath("patch-remove")
+	patchDir := testdata.Abs("patch-remove")
 
 	p, err := excav.OpenPatch(patchDir)
 	if err != nil {
@@ -21,17 +21,17 @@ func Test_RemoveTask(t *testing.T) {
 	}
 
 	// when we apply patch
-	repoDir := testdata.AbsPath("repo")
+	repoDir := testdata.Abs("repo")
 	p.Apply(repoDir, nil)
 
 	// then the files must be deleted
-	_, err = os.Stat(testdata.AbsPath("repo/subdir/file1.txt"))
+	_, err = os.Stat(testdata.Abs("repo/subdir/file1.txt"))
 	if os.IsExist(err) {
 		t.Error("the file1.txt exist! It should be deleted")
 		t.FailNow()
 	}
 
-	_, err = os.Stat(testdata.AbsPath("repo/subdir/file2.txt"))
+	_, err = os.Stat(testdata.Abs("repo/subdir/file2.txt"))
 	if os.IsExist(err) {
 		t.Error("the file2.txt exists! It should be deleted")
 	}

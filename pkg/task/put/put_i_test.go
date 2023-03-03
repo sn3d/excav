@@ -1,24 +1,21 @@
 package put_test
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/sn3d/excav/pkg/excav"
-	"github.com/sn3d/excav/pkg/testdata"
+	"github.com/sn3d/testdata"
 )
 
 func Test_PutTask(t *testing.T) {
 	testdata.Setup()
 
-	fmt.Println(testdata.String())
-
-	p, err := excav.OpenPatch(testdata.AbsPath("patch"))
+	p, err := excav.OpenPatch(testdata.Abs("patch"))
 	if err != nil {
 		t.FailNow()
 	}
 
-	absPath := testdata.AbsPath("repo")
+	absPath := testdata.Abs("repo")
 	err = p.Apply(absPath, nil)
 	if err != nil {
 		t.FailNow()

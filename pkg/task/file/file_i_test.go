@@ -6,14 +6,14 @@ import (
 	"testing"
 
 	"github.com/sn3d/excav/pkg/excav"
-	"github.com/sn3d/excav/pkg/testdata"
+	"github.com/sn3d/testdata"
 )
 
 func Test_File(t *testing.T) {
 	testdata.Setup()
 
 	// given patch with 'add' task
-	patchDir := testdata.AbsPath("patch-file")
+	patchDir := testdata.Abs("patch-file")
 	p, err := excav.OpenPatch(patchDir)
 	if err != nil {
 		t.Fatalf("error in opening patch file: %s", err.Error())
@@ -26,7 +26,7 @@ func Test_File(t *testing.T) {
 		"message": "Hello!",
 	}
 
-	repoDir := testdata.AbsPath("repo")
+	repoDir := testdata.Abs("repo")
 	err = p.Apply(repoDir, params)
 	if err != nil {
 		t.FailNow()

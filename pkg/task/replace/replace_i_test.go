@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/sn3d/excav/pkg/excav"
-	"github.com/sn3d/excav/pkg/testdata"
+	"github.com/sn3d/testdata"
 )
 
 // scenario: replace tag with content from template file
@@ -18,9 +18,9 @@ func Test_ReplaceTask(t *testing.T) {
 	var p *excav.Patch
 
 	testdata.Setup()
-	repoDir := testdata.AbsPath("repo")
+	repoDir := testdata.Abs("repo")
 
-	p, err = excav.OpenPatch(testdata.AbsPath("patch-replace-tmplt"))
+	p, err = excav.OpenPatch(testdata.Abs("patch-replace-tmplt"))
 	if err != nil {
 		t.Errorf("Error read patch %s", err)
 	}
@@ -31,7 +31,7 @@ func Test_ReplaceTask(t *testing.T) {
 	}
 
 	// then...
-	text, _ := ioutil.ReadFile(testdata.AbsPath("repo/file3.txt"))
+	text, _ := ioutil.ReadFile(testdata.Abs("repo/file3.txt"))
 	if strings.Contains(string(text), "TODO: text here") {
 		t.Errorf("the +tag wasn't replaced. Check if replacing works correctly and +tag is in file3.txt")
 	}

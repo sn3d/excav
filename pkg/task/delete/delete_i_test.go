@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/sn3d/excav/pkg/excav"
-	"github.com/sn3d/excav/pkg/testdata"
+	"github.com/sn3d/testdata"
 )
 
 // scenario:
@@ -14,8 +14,8 @@ import (
 func Test_DeleteTask(t *testing.T) {
 	testdata.Setup()
 
-	repoDir := testdata.AbsPath("repo")
-	patchDir := testdata.AbsPath("patch-delete")
+	repoDir := testdata.Abs("repo")
+	patchDir := testdata.Abs("patch-delete")
 
 	p, err := excav.OpenPatch(patchDir)
 	if err != nil {

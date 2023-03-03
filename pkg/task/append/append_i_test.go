@@ -4,14 +4,14 @@ import (
 	"testing"
 
 	"github.com/sn3d/excav/pkg/excav"
-	"github.com/sn3d/excav/pkg/testdata"
+	"github.com/sn3d/testdata"
 )
 
 func Test_AppendTask(t *testing.T) {
 	testdata.Setup()
 
-	repoDir := testdata.AbsPath("repo")
-	patchDir := testdata.AbsPath("patch")
+	repoDir := testdata.Abs("repo")
+	patchDir := testdata.Abs("patch")
 
 	p, err := excav.OpenPatch(patchDir)
 	if err != nil {
