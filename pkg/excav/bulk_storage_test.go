@@ -3,10 +3,12 @@ package excav
 import (
 	"fmt"
 	"testing"
+
+	"github.com/sn3d/excav/pkg/dir"
 )
 
 func TestContextSaveLoad(t *testing.T) {
-	tmpDir := TempDirectory()
+	tmpDir := dir.Temp()
 
 	ctx := PatchContext{
 		RepoName: "hello/world",

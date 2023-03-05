@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/sn3d/excav/pkg/dir"
 	"gopkg.in/yaml.v2"
 )
 
@@ -80,7 +81,7 @@ func LoadConfiguration() (*Configuration, error) {
 // relly on tetmporary workspace;
 func TestConfiguration() (*Configuration, error) {
 	testCfg := &Configuration{
-		WorkspaceDir: string(TempDirectory()),
+		WorkspaceDir: string(dir.Temp()),
 	}
 
 	return testCfg, nil
@@ -206,7 +207,7 @@ func (cfg *Configuration) GetCurrentBulk() string {
 }
 
 // function returns you directory of current bulk
-func (cfg *Configuration) GetCurrentBulkDir() Directory {
+func (cfg *Configuration) GetCurrentBulkDir() dir.Directory {
 	bulkID := cfg.GetCurrentBulk()
-	return Directory(cfg.WorkspaceDir).Subdir(bulkID)
+	return dir.New(cfg.WorkspaceDir, bulkID)
 }

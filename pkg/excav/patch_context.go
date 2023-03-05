@@ -2,8 +2,8 @@ package excav
 
 import (
 	"errors"
-	"path/filepath"
 
+	"github.com/sn3d/excav/pkg/dir"
 	"github.com/sn3d/excav/pkg/git"
 	"github.com/sn3d/excav/pkg/log"
 	"github.com/sn3d/excav/pkg/provider"
@@ -45,7 +45,7 @@ type PatchContext struct {
 	// This field holds all parameters and values for patch
 	AllParams Params `yaml:"params"`
 
-	bulkDir Directory `yaml:"-"`
+	bulkDir dir.Directory `yaml:"-"`
 
 	// ref. to provider
 	prvd provider.Provider
@@ -72,7 +72,8 @@ func (ctx *PatchContext) Apply(p *Patch, message string) error {
 		return err
 	}
 
-	err = p.Apply(ctx.getRepositoryDir().String(), ctx.AllParams.ToMap())
+	repoDir := ctx.bulkDir.Subdir(ctx.RepoName)
+	err = p.Apply(string(repoDir), ctx.AllParams.ToMap())
 	if err != nil {
 		ctx.handleError(err)
 		return err
@@ -118,7 +119,7 @@ func (ctx *PatchContext) Push() error {
 }
 
 func (ctx *PatchContext) Diff() string {
-	repo, err := ctx.open()
+	repo, err := git.Open(string(ctx.bulkDir.Subdir(ctx.RepoName)))
 	if err != nil {
 		return ""
 	}
@@ -134,7 +135,7 @@ func (ctx *PatchContext) cloneOrOpen() (*git.Repository, error) {
 	var err error
 
 	// check if repo is already cloned or not
-	repoDir := ctx.getRepositoryDir()
+	repoDir := ctx.bulkDir.Subdir(ctx.RepoName)
 	if repoDir.IsNotExist() {
 		// clone repository
 		repoURL := ctx.prvd.GetRepositoryURL(ctx.RepoName)
@@ -143,20 +144,7 @@ func (ctx *PatchContext) cloneOrOpen() (*git.Repository, error) {
 		return repo, err
 	} else {
 		log.Debug("open repository", "dir", string(repoDir))
-		return ctx.open()
+		repo, err := git.Open(string(ctx.bulkDir.Subdir(ctx.RepoName)))
+		return repo, err
 	}
-}
-
-func (ctx *PatchContext) open() (*git.Repository, error) {
-	repoDir := ctx.getRepositoryDir()
-	return git.Open(string(repoDir))
-}
-
-func (ctx *PatchContext) getRepositoryDir() Directory {
-	repoDir := ctx.bulkDir.Subdir(ctx.RepoName)
-	absRepoDir, err := filepath.Abs(string(repoDir))
-	if err != nil {
-		return ""
-	}
-	return Directory(absRepoDir)
 }

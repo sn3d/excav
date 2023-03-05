@@ -1,4 +1,4 @@
-package excav
+package dir
 
 import (
 	"io"
@@ -12,22 +12,30 @@ import (
 // for directories
 type Directory string
 
-func TempDirectory() Directory {
-	name, err := ioutil.TempDir("", "excav-*")
-	if err != nil {
-		return Directory("")
+func New(paths ...string) Directory {
+	for i, p := range paths {
+		paths[i] = strings.Trim(p, "\t\n")
 	}
-	return Directory(name)
+
+	path := filepath.Join(paths...)
+	absPath, err := filepath.Abs(path)
+	if err != nil {
+		return Directory(path)
+	} else {
+		return Directory(absPath)
+	}
+
+	return Directory(filepath.Join(paths...))
 }
 
-func CurrentDirectory() Directory {
-	currentDir, err := os.Getwd()
+// returns new created temporary directory
+func Temp() Directory {
+	tmpDir, err := ioutil.TempDir("", "excav-*")
 	if err != nil {
-		// I hope there is no reason for error on healthy.
-		// I know, I'm bit optimistic.
 		return Directory("")
+	} else {
+		return New(tmpDir)
 	}
-	return Directory(currentDir)
 }
 
 // returns absolute path of subdirectory in this
@@ -35,7 +43,7 @@ func CurrentDirectory() Directory {
 // just join of names.
 func (d Directory) Subdir(name string) Directory {
 	n := strings.Trim(name, "\t\n ")
-	return Directory(filepath.Join(string(d), n))
+	return New(string(d), n)
 }
 
 // returns absolute path to file in directory. The file

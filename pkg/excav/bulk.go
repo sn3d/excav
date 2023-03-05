@@ -3,6 +3,7 @@ package excav
 import (
 	"fmt"
 
+	"github.com/sn3d/excav/pkg/dir"
 	"github.com/sn3d/excav/pkg/log"
 	"github.com/sn3d/excav/pkg/provider"
 )
@@ -17,7 +18,7 @@ type NewBulkOpts struct {
 type Bulk struct {
 	ID string
 
-	dir      Directory
+	dir      dir.Directory
 	contexts []*PatchContext
 	cfg      *Configuration
 	prvd     provider.Provider
@@ -39,7 +40,7 @@ func NewBulk(cfg *Configuration) *Bulk {
 	}
 
 	// create new bulk dir. with random name
-	bulk.dir = Directory(cfg.WorkspaceDir).Subdir(bulk.ID)
+	bulk.dir = dir.New(cfg.WorkspaceDir, bulk.ID)
 	if bulk.dir.IsNotExist() {
 		bulk.dir.Mkdir()
 	}

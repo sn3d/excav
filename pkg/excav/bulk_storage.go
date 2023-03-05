@@ -6,6 +6,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/sn3d/excav/pkg/dir"
 	"gopkg.in/yaml.v2"
 )
 
@@ -24,7 +25,7 @@ func loadContext(path string) (*PatchContext, error) {
 	return ctx, nil
 }
 
-func saveContext(bulkDir Directory, ctx *PatchContext) error {
+func saveContext(bulkDir dir.Directory, ctx *PatchContext) error {
 	if ctx.RepoName == "" {
 		return errors.New("cannot save context, repo name is empty string")
 	}
@@ -51,7 +52,7 @@ func saveContext(bulkDir Directory, ctx *PatchContext) error {
 
 // this function returns you absolute path to file where
 // state if PatchContext is stored
-func composeContextFileName(workspace Directory, repoName string) string {
+func composeContextFileName(workspace dir.Directory, repoName string) string {
 
 	// normalize name '/org/my-repo' to 'org-my-repo'
 	normalized := repoName
