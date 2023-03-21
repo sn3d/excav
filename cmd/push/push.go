@@ -3,8 +3,8 @@ package push
 import (
 	"fmt"
 
-	"github.com/sn3d/excav/internal/excav"
-	"github.com/sn3d/excav/internal/termui"
+	"github.com/sn3d/excav/pkg/excav"
+	"github.com/sn3d/excav/pkg/termui"
 	"github.com/urfave/cli/v2"
 )
 

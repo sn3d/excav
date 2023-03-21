@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/AlecAivazis/survey/v2 v2.2.2
 	github.com/go-git/go-git/v5 v5.2.0
+	github.com/sn3d/testdata v0.1.1
 	github.com/urfave/cli/v2 v2.2.0
 	go.uber.org/zap v1.16.0
 	gopkg.in/yaml.v2 v2.3.0

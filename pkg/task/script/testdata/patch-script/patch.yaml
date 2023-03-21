@@ -1,0 +1,8 @@
+# This example demonstrate how to execute external command
+# that will do patching. It might be python script or just sed.
+# The command is executed here in patch directory as current dir.
+# The repository is passed into script via {{.RepositoryDir}}
+# placeholder
+- name: example-call-script
+  script:
+    - python3 script.py {{.RepositoryDir}}

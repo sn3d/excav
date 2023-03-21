@@ -13,8 +13,8 @@ import (
 	"github.com/sn3d/excav/cmd/push"
 	"github.com/sn3d/excav/cmd/show"
 
-	"github.com/sn3d/excav/internal/termui"
-	"github.com/sn3d/excav/lib/log"
+	"github.com/sn3d/excav/pkg/log"
+	"github.com/sn3d/excav/pkg/termui"
 	"github.com/urfave/cli/v2"
 )
 
